@@ -1,0 +1,40 @@
+{
+  "name": "polarise-bot",
+  "version": "1.0.0",
+  "description": "Polarise Protocol Automation Bot",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "clear-log": "node index.js --clear-log",
+    "clear-data": "node index.js --clear-data",
+    "check-log": "node index.js --check-log",
+    "check-config": "node index.js --check-config",
+    "check-data": "node index.js --check-data"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ethers": "^6.9.0",
+    "figlet": "^1.9.4",
+    "got-scraping": "^4.1.3",
+    "user-agents": "^1.1.193"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsnodrops/polarise-bot.git"
+  },
+  "keywords": [
+    "testnet",
+    "airdrop",
+    "evm",
+    "automation",
+    "crypto",
+    "polarise"
+  ],
+  "author": "itsnodrops",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsnodrops/polarise-bot/issues"
+  },
+  "homepage": "https://github.com/itsnodrops/polarise-bot#readme"
+}
