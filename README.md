@@ -152,7 +152,7 @@ All files in the `data/` folder can be customized by the user:
 
 **Tip:** Without Groq API, the bot uses content from `posts.txt` and `discussions.txt`. You can populate these files manually with your own content!
 
-## � Project Structure
+## 📑 Project Structure
 
 ```
 polarise-bot/
@@ -184,7 +184,7 @@ polarise-bot/
 └── logs/                 # Runtime logs
 ```
 
-## �🛡️ Disclaimer
+## 🛡️ Disclaimer
 
 This tool is for educational and testing purposes only. Use at your own risk. The authors are not responsible for any consequences resulting from the use of this software.
 
