@@ -10,14 +10,20 @@ Automated bot for interacting with Polarise with support for multi-account, prox
 ## ✨ Features
 
 - 🔐 **Wallet Authentication** - Connect wallet and manage sessions automatically
+- 📸 **Rich Media Posts** - Auto-post text content with supported media attachments
+- ⚡ **Smart Proxy Pool** - Intelligent concurrency that maps accounts to proxies 1:1 (e.g., runs 5 accounts simultaneously with 5 unique proxies)
 - 🤖 **Auto Content Generation** - Generate posts and discussions using Groq AI (Llama/Mixtral)
 - 💧 **Auto Faucet** - Automatically claim faucet tokens with captcha solving
-- ✅ **Daily Tasks** - Complete posts, discussions, tips, comments, and subscribes
+- ✅ **Comprehensive Daily Tasks**:
+  - **Posts & Discussions**: Create engaging content
+  - **Likes**: Auto-like community posts
+  - **Follows**: Build social graph (distinct from subscribing)
+  - **Subscribes**: Subscribe to creators/channels
+  - **Tips**: Distribute GRISE token tips
+  - **Comments**: Reply to community threads
 - 💱 **Point Swapping** - Automatically swap earned points for GRISE tokens
-- 👥 **Multi-Account** - Process multiple accounts concurrently
-- 🔄 **Proxy Support** - HTTP, HTTPS, SOCKS4, and SOCKS5 proxies with rotation
-- 📊 **TUI Dashboard** - Real-time monitoring of account progress, points, and proxy status
-- 🧩 **Captcha Solving** - Integrated Turnstile/reCAPTCHA solving via Solver API
+- 📊 **TUI Dashboard** - Real-time monitoring of concurrent threads, points, and proxy status
+- 🧩 **Captcha Solving** - Integrated reCaptcha v2 solving via Solver API
 - 👤 **Auto Profile Update** - Automatically change default usernames (0x...) to custom profiles
 
 ## ⚙️ How It Works
@@ -25,12 +31,14 @@ Automated bot for interacting with Polarise with support for multi-account, prox
 1. **Initialization** - Bot loads private keys from `.env`, assigns proxies from `proxies.txt`
 2. **Authentication** - Signs wallet message with private key, obtains auth token
 3. **Profile Check** - Fetches profile, updates username if still default (`0x...`)
-4. **Daily Tasks** - Completes tasks in sequence:
-   - 📝 Posts (text/media) → uses content from `posts.txt`
-   - 💬 Discussions → uses topics from `discussions.txt`
-   - 💡 Tips → tips other users with GRISE tokens
-   - 💬 Comments → comments on posts in content pool
-   - 👥 Subscribes → follows other accounts
+4. **Daily Tasks** - Completes tasks in sequence for each active thread:
+   - 📝 **Create Posts** (Text/Media) → uses content/images from data sources
+   - 💬 **Create Discussions** → uses topics from `discussions.txt`
+   - ❤️ **Like Posts** → interacts with trending or recent feed items
+   - 👣 **Follow Users** → follows target accounts or suggested users
+   - 🔔 **Subscribe** → subscribes to specific channels/creators
+   - 💡 **Send Tips** → tips other users with GRISE tokens
+   - 🗣️ **Comments** → comments on posts in content pool
 5. **Point Swapping** - Swaps accumulated points for GRISE tokens
 6. **Faucet Claim** - Claims daily faucet tokens (requires Solver API)
 7. **Loop** - Repeats for all accounts with delays between runs
