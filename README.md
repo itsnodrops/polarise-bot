@@ -10,37 +10,31 @@ Automated bot for interacting with Polarise with support for multi-account, prox
 ## ✨ Features
 
 - 🔐 **Wallet Authentication** - Connect wallet and manage sessions automatically
-- 📸 **Rich Media Posts** - Auto-post text content with supported media attachments
-- ⚡ **Smart Proxy Pool** - Intelligent concurrency that maps accounts to proxies 1:1 (e.g., runs 5 accounts simultaneously with 5 unique proxies)
 - 🤖 **Auto Content Generation** - Generate posts and discussions using Groq AI (Llama/Mixtral)
 - 💧 **Auto Faucet** - Automatically claim faucet tokens with captcha solving
-- ✅ **Comprehensive Daily Tasks**:
-  - **Posts & Discussions**: Create engaging content
-  - **Likes**: Auto-like community posts
-  - **Follows**: Build social graph (distinct from subscribing)
-  - **Subscribes**: Subscribe to creators/channels
-  - **Tips**: Distribute GRISE token tips
-  - **Comments**: Reply to community threads
+- 🧩 **Captcha Solving** - Integrated Turnstile/reCAPTCHA solving via Solver API
+- ✅ **Daily Tasks** - Complete posts, discussions, tips, comments, and subscribes
 - 💱 **Point Swapping** - Automatically swap earned points for GRISE tokens
-- 📊 **TUI Dashboard** - Real-time monitoring of concurrent threads, points, and proxy status
-- 🧩 **Captcha Solving** - Integrated reCaptcha v2 solving via Solver API
-- 👤 **Auto Profile Update** - Automatically change default usernames (0x...) to custom profiles
+- 👥 **Multi-Account** - Process multiple accounts concurrently
+- 🔄 **Proxy Support** - HTTP, HTTPS, SOCKS4, and SOCKS5 proxies with rotation
+- 📊 **TUI Dashboard** - Real-time monitoring of account progress, points, and proxy status
+- 👤 **Auto Profile Update** - Automatically update default usernames and avatars
+- 🔄 **Token Auto-Refresh** - Seamlessly refreshes expired tokens without restarting tasks
+- 💾 **Task State Persistence** - Resumes from exact point after auth errors
 
 ## ⚙️ How It Works
 
 1. **Initialization** - Bot loads private keys from `.env`, assigns proxies from `proxies.txt`
 2. **Authentication** - Signs wallet message with private key, obtains auth token
-3. **Profile Check** - Fetches profile, updates username if still default (`0x...`)
-4. **Daily Tasks** - Completes tasks in sequence for each active thread:
-   - 📝 **Create Posts** (Text/Media) → uses content/images from data sources
-   - 💬 **Create Discussions** → uses topics from `discussions.txt`
-   - ❤️ **Like Posts** → interacts with trending or recent feed items
-   - 👣 **Follow Users** → follows target accounts or suggested users
-   - 🔔 **Subscribe** → subscribes to specific channels/creators
-   - 💡 **Send Tips** → tips other users with GRISE tokens
-   - 🗣️ **Comments** → comments on posts in content pool
-5. **Point Swapping** - Swaps accumulated points for GRISE tokens
-6. **Faucet Claim** - Claims daily faucet tokens (requires Solver API)
+3. **Faucet Claim** - Claims daily faucet tokens (requires Solver API)
+4. **Profile Check** - Updates profile if username (`0x...`) or avatar is still default
+5. **Daily Tasks** - Completes tasks in sequence:
+   - 📝 Posts (text/media) → uses content from `posts.txt`
+   - 💬 Discussions → uses topics from `discussions.txt`
+   - 💡 Tips → tips other users with GRISE tokens
+   - 💬 Comments → comments on posts in content pool
+   - 👥 Subscribes → follows other accounts
+6. **Point Swapping** - Swaps accumulated points for GRISE tokens
 7. **Loop** - Repeats for all accounts with delays between runs
 
 ## 📋 Requirements
@@ -118,10 +112,12 @@ Edit `config.js` to customize bot behavior:
 
 | Setting | Description |
 |---------|-------------|
-| `CHANGE_USERNAME` | Enable/disable automatic username changes for default `0x...` names |
-| `GROQ_MODEL` | Choose between Llama and Mixtral models for content generation |
-| `DAILY_LIMITS` | Configure max posts, comments, tips, faucet claims per day |
+| `UPDATE_PROFILE` | true/false automatic profile updates (username + avatar) |
+| `GROQ.MODEL` | Choose between Llama and Mixtral models for content generation |
+| `DAILY_LIMITS` | Configure max posts, comments, tips, discussions per day |
 | `DELAYS` | Adjust timing between accounts to mimic human behavior |
+| `ENABLE_LOOP` | true/false - If true, script goes idle after processing then re-runs |
+| `LOOP_TIME` | HH:MM:SS format countdown until next run (e.g., `12:00:00` = 12 hours) |
 
 ## 🛠️ Troubleshooting
 
@@ -132,8 +128,8 @@ Edit `config.js` to customize bot behavior:
 | **Network/Proxy error** | Proxy or network is unstable. Bot will retry 3 times then pause or skip. |
 | **Solver error** | Check your `SOLVER_API_KEY`. |
 | **Groq/Content error** | Check `GROQ_API_KEY` or quota. Bot can run without Groq but features will be limited. |
-| **Login failed** | Check private key format or proxy. Token may be expired (auto-refreshes). |
-| **Username not changing** | Check `CHANGE_USERNAME` in config.js and ensure `profiles.txt` exists. |
+| **Login failed** | Check private key format or proxy. Token auto-refreshes on expiry. |
+| **Profile not updating** | Check `UPDATE_PROFILE` in config.js and ensure `profiles.txt` exists. |
 
 ## 🧰 Utility Scripts
 
@@ -160,7 +156,7 @@ All files in the `data/` folder can be customized by the user:
 
 **Tip:** Without Groq API, the bot uses content from `posts.txt` and `discussions.txt`. You can populate these files manually with your own content!
 
-## 📑 Project Structure
+## � Project Structure
 
 ```
 polarise-bot/
@@ -198,5 +194,4 @@ This tool is for educational and testing purposes only. Use at your own risk. Th
 
 ## 📄 License
 
-This project is licensed under the [MIT © 2025](LICENSE).
-
+This project is licensed under the [MIT © 2026](LICENSE).
