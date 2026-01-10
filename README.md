@@ -150,6 +150,7 @@ All files in the `data/` folder can be customized by the user:
 |------|--------|----------|
 | `profiles.txt` | `username,description` | ✅ Add your own profiles |
 | `posts.txt` | `title,content` | ✅ Add custom posts |
+| `media_titles.txt` | `title` | ✅ Add titles for media posts |
 | `discussions.txt` | `title\|option1\|option2\|emoji` | ✅ Add custom topics |
 | `data.json` | JSON (auto-managed) | ⚠️ Auto-managed |
 | `contents.json` | JSON (auto-managed) | ⚠️ Auto-managed |
