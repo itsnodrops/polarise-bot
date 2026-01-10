@@ -109,8 +109,8 @@ SOLVER_API_KEY=
 
 # Private keys (add as many as needed)
 # Format: PK_N where N is a sequential number starting from 1
-PK_1=your_private_key_here
-# PK_2=your_second_private_key_here
+PK_1=
+# PK_2=
 `;
         fs.writeFileSync(PATHS.env, envTemplate);
         console.log('✓ .env created with template (please configure your private keys)');
@@ -191,7 +191,7 @@ async function showAccounts() {
         const colWidths = {
             '#': 4,
             'Wallet': 15,
-            'Username': 10,
+            'Username': 22,
             'Points': 8,
             'POLAR': 8,
             'GRISE': 10,

@@ -16,20 +16,27 @@ export default {
         DISCUSSIONS_PER_GENERATE: 25,
     },
 
-    // Change Profile username true/false
-    CHANGE_USERNAME: false,
+    // Update profile (username and avatar) if still default. Set to false to skip
+    UPDATE_PROFILE: true,
 
     // Daily Limits (per account per day)
     DAILY_LIMITS: {
-        MAX_POSTS_PER_DAY: 50,
+        MAX_FAUCET_CLAIMS_PER_DAY: 1,
+        MAX_POSTS_PER_DAY: 10,
         MAX_DISCUSSIONS_PER_DAY: 10,
         MAX_TIPS_PER_DAY: 10,
-        MAX_COMMENTS_PER_DAY: 100,
+        MAX_COMMENTS_PER_DAY: 50,
         MAX_SUBSCRIBES_PER_DAY: 10,
     },
 
     // Delays and Timing (in milliseconds)
     DELAYS: {
         BETWEEN_ACCOUNTS_MS: 10000,
-    }
+    },
+
+    // Loop Configuration
+    // ENABLE_LOOP: true = script goes idle after processing, then re-runs
+    // LOOP_TIME: HH:MM:SS format, countdown until next run (e.g., '10:30:00' = 10.5 hours)
+    ENABLE_LOOP: false,     // Set to true to enable loop
+    LOOP_TIME: '12:00:00',  // 12 hours, ignored if ENABLE_LOOP is false
 };
